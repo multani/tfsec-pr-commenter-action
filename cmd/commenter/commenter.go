@@ -29,6 +29,7 @@ func main() {
 
 	prNo, err := extractPullRequestNumber()
 	if err != nil {
+		fmt.Println(err)
 		fmt.Println("Not a PR, nothing to comment on, exiting...")
 		return
 	}
@@ -115,6 +116,7 @@ func extractPullRequestNumber() (int, error) {
 
 	prNumber, err := strconv.Atoi(fmt.Sprintf("%v", payload["number"]))
 	if err != nil {
+		fmt.Println(err)
 		return 0, fmt.Errorf("not a valid PR")
 	}
 	return prNumber, nil

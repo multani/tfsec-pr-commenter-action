@@ -14,17 +14,17 @@ grep tfsec-linux-amd64 tfsec.checksums > tfsec-linux-amd64.checksum
 sha256sum -c tfsec-linux-amd64.checksum
 install tfsec-linux-amd64 /usr/local/bin/tfsec
 
-COMMENTER_VERSION="latest"
-if [ "$INPUT_COMMENTER_VERSION" != "latest" ]; then
-  COMMENTER_VERSION="tags/${INPUT_COMMENTER_VERSION}"
-fi
-
-wget -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec-pr-commenter-action/releases/${COMMENTER_VERSION} -O - | grep -o -E "https://.+?commenter-linux-amd64")" > commenter-linux-amd64
-wget -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec-pr-commenter-action/releases/${COMMENTER_VERSION} -O - | grep -o -E "https://.+?checksums.txt")" > commenter.checksums
-
-grep commenter-linux-amd64 commenter.checksums > commenter-linux-amd64.checksum
-sha256sum -c commenter-linux-amd64.checksum
-install commenter-linux-amd64 /usr/local/bin/commenter
+#COMMENTER_VERSION="latest"
+#if [ "$INPUT_COMMENTER_VERSION" != "latest" ]; then
+#  COMMENTER_VERSION="tags/${INPUT_COMMENTER_VERSION}"
+#fi
+#
+#wget -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec-pr-commenter-action/releases/${COMMENTER_VERSION} -O - | grep -o -E "https://.+?commenter-linux-amd64")" > commenter-linux-amd64
+#wget -O - -q "$(wget -q https://api.github.com/repos/aquasecurity/tfsec-pr-commenter-action/releases/${COMMENTER_VERSION} -O - | grep -o -E "https://.+?checksums.txt")" > commenter.checksums
+#
+#grep commenter-linux-amd64 commenter.checksums > commenter-linux-amd64.checksum
+#sha256sum -c commenter-linux-amd64.checksum
+#install commenter-linux-amd64 /usr/local/bin/commenter
 
 if [ -n "${GITHUB_WORKSPACE}" ]; then
   cd "${GITHUB_WORKSPACE}" || exit
